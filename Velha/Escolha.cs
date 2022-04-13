@@ -15,6 +15,7 @@ namespace Velha
         public Escolha()
         {
             InitializeComponent();
+
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -24,7 +25,14 @@ namespace Velha
 
         private void BtnNormalLocal_Click(object sender, EventArgs e)
         {
-            Jogo jogo = new Jogo();
+            
+        }
+
+        private void BtnModo(object sender, EventArgs e)
+        {
+            int modo = int.Parse((sender as Button).Name.Substring(1));
+           
+            Jogo jogo = new Jogo(modo);
             this.Hide();
             jogo.Show();
         }

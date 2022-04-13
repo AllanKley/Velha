@@ -104,7 +104,7 @@
             this.BtnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
             this.BtnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEntrar.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEntrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
+            this.BtnEntrar.ForeColor = System.Drawing.SystemColors.Control;
             this.BtnEntrar.Location = new System.Drawing.Point(560, 593);
             this.BtnEntrar.Name = "BtnEntrar";
             this.BtnEntrar.Size = new System.Drawing.Size(249, 44);
@@ -189,7 +189,7 @@
             // 
             // BtnCadastro
             // 
-            this.BtnCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
+            this.BtnCadastro.BackColor = System.Drawing.SystemColors.Control;
             this.BtnCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCadastro.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
@@ -216,7 +216,7 @@
             this.LabelTitulo.AutoSize = true;
             this.LabelTitulo.BackColor = System.Drawing.Color.Transparent;
             this.LabelTitulo.Font = new System.Drawing.Font("Bahnschrift Condensed", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
+            this.LabelTitulo.ForeColor = System.Drawing.SystemColors.Control;
             this.LabelTitulo.Location = new System.Drawing.Point(77, 247);
             this.LabelTitulo.Name = "LabelTitulo";
             this.LabelTitulo.Size = new System.Drawing.Size(240, 58);

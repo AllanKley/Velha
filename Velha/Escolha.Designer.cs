@@ -32,12 +32,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.BtnNormalLocal = new System.Windows.Forms.Button();
-            this.BtnNormalOnline = new System.Windows.Forms.Button();
-            this.BtnNormalComputer = new System.Windows.Forms.Button();
-            this.BtnSuperComputer = new System.Windows.Forms.Button();
-            this.BtnSuperOnline = new System.Windows.Forms.Button();
-            this.BtnSuperLocal = new System.Windows.Forms.Button();
+            this.M1 = new System.Windows.Forms.Button();
+            this.M2 = new System.Windows.Forms.Button();
+            this.M3 = new System.Windows.Forms.Button();
+            this.M6 = new System.Windows.Forms.Button();
+            this.M5 = new System.Windows.Forms.Button();
+            this.M4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -81,84 +81,89 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
-            // BtnNormalLocal
+            // M1
             // 
-            this.BtnNormalLocal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnNormalLocal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNormalLocal.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNormalLocal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.BtnNormalLocal.Location = new System.Drawing.Point(441, 232);
-            this.BtnNormalLocal.Name = "BtnNormalLocal";
-            this.BtnNormalLocal.Size = new System.Drawing.Size(249, 44);
-            this.BtnNormalLocal.TabIndex = 10;
-            this.BtnNormalLocal.Text = "Play Local";
-            this.BtnNormalLocal.UseVisualStyleBackColor = false;
-            this.BtnNormalLocal.Click += new System.EventHandler(this.BtnNormalLocal_Click);
+            this.M1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.M1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.M1.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.M1.ForeColor = System.Drawing.SystemColors.Control;
+            this.M1.Location = new System.Drawing.Point(441, 232);
+            this.M1.Name = "M1";
+            this.M1.Size = new System.Drawing.Size(249, 44);
+            this.M1.TabIndex = 10;
+            this.M1.Text = "Play Local";
+            this.M1.UseVisualStyleBackColor = false;
+            this.M1.Click += new System.EventHandler(this.BtnModo);
             // 
-            // BtnNormalOnline
+            // M2
             // 
-            this.BtnNormalOnline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnNormalOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNormalOnline.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNormalOnline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.BtnNormalOnline.Location = new System.Drawing.Point(441, 288);
-            this.BtnNormalOnline.Name = "BtnNormalOnline";
-            this.BtnNormalOnline.Size = new System.Drawing.Size(249, 44);
-            this.BtnNormalOnline.TabIndex = 11;
-            this.BtnNormalOnline.Text = "Play Online";
-            this.BtnNormalOnline.UseVisualStyleBackColor = false;
+            this.M2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.M2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.M2.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.M2.ForeColor = System.Drawing.SystemColors.Control;
+            this.M2.Location = new System.Drawing.Point(441, 288);
+            this.M2.Name = "M2";
+            this.M2.Size = new System.Drawing.Size(249, 44);
+            this.M2.TabIndex = 11;
+            this.M2.Text = "Play Online";
+            this.M2.UseVisualStyleBackColor = false;
+            this.M2.Click += new System.EventHandler(this.BtnModo);
             // 
-            // BtnNormalComputer
+            // M3
             // 
-            this.BtnNormalComputer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnNormalComputer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNormalComputer.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNormalComputer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.BtnNormalComputer.Location = new System.Drawing.Point(441, 347);
-            this.BtnNormalComputer.Name = "BtnNormalComputer";
-            this.BtnNormalComputer.Size = new System.Drawing.Size(249, 44);
-            this.BtnNormalComputer.TabIndex = 12;
-            this.BtnNormalComputer.Text = "Play Computer";
-            this.BtnNormalComputer.UseVisualStyleBackColor = false;
+            this.M3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.M3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.M3.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.M3.ForeColor = System.Drawing.SystemColors.Control;
+            this.M3.Location = new System.Drawing.Point(441, 347);
+            this.M3.Name = "M3";
+            this.M3.Size = new System.Drawing.Size(249, 44);
+            this.M3.TabIndex = 12;
+            this.M3.Text = "Play Computer";
+            this.M3.UseVisualStyleBackColor = false;
+            this.M3.Click += new System.EventHandler(this.BtnModo);
             // 
-            // BtnSuperComputer
+            // M6
             // 
-            this.BtnSuperComputer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnSuperComputer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSuperComputer.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSuperComputer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.BtnSuperComputer.Location = new System.Drawing.Point(441, 655);
-            this.BtnSuperComputer.Name = "BtnSuperComputer";
-            this.BtnSuperComputer.Size = new System.Drawing.Size(249, 44);
-            this.BtnSuperComputer.TabIndex = 16;
-            this.BtnSuperComputer.Text = "Play Computer";
-            this.BtnSuperComputer.UseVisualStyleBackColor = false;
+            this.M6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.M6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.M6.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.M6.ForeColor = System.Drawing.SystemColors.Control;
+            this.M6.Location = new System.Drawing.Point(441, 655);
+            this.M6.Name = "M6";
+            this.M6.Size = new System.Drawing.Size(249, 44);
+            this.M6.TabIndex = 16;
+            this.M6.Text = "Play Computer";
+            this.M6.UseVisualStyleBackColor = false;
+            this.M6.Click += new System.EventHandler(this.BtnModo);
             // 
-            // BtnSuperOnline
+            // M5
             // 
-            this.BtnSuperOnline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnSuperOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSuperOnline.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSuperOnline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.BtnSuperOnline.Location = new System.Drawing.Point(441, 596);
-            this.BtnSuperOnline.Name = "BtnSuperOnline";
-            this.BtnSuperOnline.Size = new System.Drawing.Size(249, 44);
-            this.BtnSuperOnline.TabIndex = 15;
-            this.BtnSuperOnline.Text = "Play Online";
-            this.BtnSuperOnline.UseVisualStyleBackColor = false;
+            this.M5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.M5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.M5.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.M5.ForeColor = System.Drawing.SystemColors.Control;
+            this.M5.Location = new System.Drawing.Point(441, 596);
+            this.M5.Name = "M5";
+            this.M5.Size = new System.Drawing.Size(249, 44);
+            this.M5.TabIndex = 15;
+            this.M5.Text = "Play Online";
+            this.M5.UseVisualStyleBackColor = false;
+            this.M5.Click += new System.EventHandler(this.BtnModo);
             // 
-            // BtnSuperLocal
+            // M4
             // 
-            this.BtnSuperLocal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnSuperLocal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSuperLocal.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSuperLocal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
-            this.BtnSuperLocal.Location = new System.Drawing.Point(441, 537);
-            this.BtnSuperLocal.Name = "BtnSuperLocal";
-            this.BtnSuperLocal.Size = new System.Drawing.Size(249, 44);
-            this.BtnSuperLocal.TabIndex = 14;
-            this.BtnSuperLocal.Text = "Play Local";
-            this.BtnSuperLocal.UseVisualStyleBackColor = false;
+            this.M4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.M4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.M4.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.M4.ForeColor = System.Drawing.SystemColors.Control;
+            this.M4.Location = new System.Drawing.Point(441, 537);
+            this.M4.Name = "M4";
+            this.M4.Size = new System.Drawing.Size(249, 44);
+            this.M4.TabIndex = 14;
+            this.M4.Text = "Play Local";
+            this.M4.UseVisualStyleBackColor = false;
+            this.M4.Click += new System.EventHandler(this.BtnModo);
             // 
             // label1
             // 
@@ -226,29 +231,29 @@
             this.BtnClose.TabStop = false;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // Jogo
+            // Escolha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(775, 760);
             this.Controls.Add(this.BtnClose);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.BtnSuperComputer);
-            this.Controls.Add(this.BtnSuperOnline);
-            this.Controls.Add(this.BtnSuperLocal);
+            this.Controls.Add(this.M6);
+            this.Controls.Add(this.M5);
+            this.Controls.Add(this.M4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.BtnNormalComputer);
-            this.Controls.Add(this.BtnNormalOnline);
-            this.Controls.Add(this.BtnNormalLocal);
+            this.Controls.Add(this.M3);
+            this.Controls.Add(this.M2);
+            this.Controls.Add(this.M1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Jogo";
+            this.Name = "Escolha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jogo";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -265,12 +270,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button BtnNormalLocal;
-        private System.Windows.Forms.Button BtnNormalOnline;
-        private System.Windows.Forms.Button BtnNormalComputer;
-        private System.Windows.Forms.Button BtnSuperComputer;
-        private System.Windows.Forms.Button BtnSuperOnline;
-        private System.Windows.Forms.Button BtnSuperLocal;
+        private System.Windows.Forms.Button M1;
+        private System.Windows.Forms.Button M2;
+        private System.Windows.Forms.Button M3;
+        private System.Windows.Forms.Button M6;
+        private System.Windows.Forms.Button M5;
+        private System.Windows.Forms.Button M4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
