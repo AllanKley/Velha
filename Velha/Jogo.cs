@@ -14,14 +14,43 @@ namespace Velha
     {
         int player = 1;
         char[] arr = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    
+      
+
+
+        PointF p1 = new PointF(10, 10); // ponto inicial linha
+        PointF p2 = new PointF(170, 30); // ponto final linha
+
+        float durationMS = 5000; // duração animação
+        float stepMS = 100; // quanto menor mais suave a animação
+
+        float stepWidthX;
+        float k;
+        float d;
+        private int stepCounter = 0;
+
+
+
         public Jogo(int modo)
         { 
             InitializeComponent();
-            label7.Text = modo.ToString();
             PnlVitoria.Hide();
+
+
+
+
+            stepWidthX = (p2.X - p1.X) / (durationMS / stepMS);
+
+            k = (p2.Y - p1.Y) / (p2.X - p1.X);
+            d = (p2.X * p1.Y - p1.X * p2.Y) / (p2.X - p1.X);
+
+            timer1.Tick += timer1_Tick;
+            timer1.Interval = (int)stepMS;
+            timer1.Start();
+
         }
-       
+
+
+        #region jogo
         private void BtnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -38,9 +67,10 @@ namespace Velha
 
 
             g.DrawEllipse(pen, (Pb.Height/2)-(raio/2), (Pb.Width/2)-(raio/2), raio, raio);
+            
 
             Pb.Image = bmp;
-
+            
             player *= -1;
         }
 
@@ -50,12 +80,12 @@ namespace Velha
             Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
             Bitmap bmp = new Bitmap(Pb.Width, Pb.Height);
             Graphics g = Graphics.FromImage(bmp);
-
+            
             g.DrawLine(pen, borda, borda, Pb.Height-borda, Pb.Width-borda);
             g.DrawLine(pen, borda, Pb.Height-borda, Pb.Width-borda, borda);
 
             Pb.Image = bmp;
-
+           
             player *= -1;
         }
         #endregion
@@ -190,6 +220,27 @@ namespace Velha
             this.Hide();
             jogo.Show();
 
+        }
+
+        #endregion
+
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            stepCounter++;
+
+            float x = p1.X + stepCounter * stepWidthX;
+            float y = k * x + d;
+            this.CreateGraphics().DrawLine(Pens.Black, p1, new PointF(x, y));
+
+
+            if (stepCounter * stepMS > durationMS)
+            {
+                stepCounter = 0;
+                timer1.Stop();
+                this.CreateGraphics().DrawLine(Pens.Red, p1, p2);
+            }
         }
     }
 }

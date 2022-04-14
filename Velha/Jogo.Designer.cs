@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Jogo));
             this.BtnClose = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             this.PGame = new System.Windows.Forms.Panel();
             this.BtnJogarNovamente = new System.Windows.Forms.Button();
             this.PnlVitoria = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BtnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -334,14 +335,9 @@
             this.PnlVitoria.Size = new System.Drawing.Size(605, 218);
             this.PnlVitoria.TabIndex = 57;
             // 
-            // label7
+            // timer1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(619, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "label7";
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Jogo
             // 
@@ -349,7 +345,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(779, 721);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.PnlVitoria);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
@@ -410,6 +405,6 @@
         private System.Windows.Forms.Panel PGame;
         private System.Windows.Forms.Button BtnJogarNovamente;
         private System.Windows.Forms.Panel PnlVitoria;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer timer1;
     }
 }
