@@ -51,9 +51,10 @@
             this.P7 = new System.Windows.Forms.PictureBox();
             this.LblVitoria = new System.Windows.Forms.Label();
             this.PGame = new System.Windows.Forms.Panel();
-            this.BtnJogarNovamente = new System.Windows.Forms.Button();
+            this.BtnVoltar = new System.Windows.Forms.Button();
             this.PnlVitoria = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Modo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BtnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -292,7 +293,6 @@
             this.LblVitoria.TabIndex = 57;
             this.LblVitoria.Text = "a";
             this.LblVitoria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblVitoria.Click += new System.EventHandler(this.LblVitoria_Click);
             // 
             // PGame
             // 
@@ -311,25 +311,25 @@
             this.PGame.Size = new System.Drawing.Size(516, 507);
             this.PGame.TabIndex = 58;
             // 
-            // BtnJogarNovamente
+            // BtnVoltar
             // 
-            this.BtnJogarNovamente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
-            this.BtnJogarNovamente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnJogarNovamente.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnJogarNovamente.ForeColor = System.Drawing.SystemColors.Control;
-            this.BtnJogarNovamente.Location = new System.Drawing.Point(353, 174);
-            this.BtnJogarNovamente.Name = "BtnJogarNovamente";
-            this.BtnJogarNovamente.Size = new System.Drawing.Size(249, 44);
-            this.BtnJogarNovamente.TabIndex = 59;
-            this.BtnJogarNovamente.Text = "Jogar Novamente";
-            this.BtnJogarNovamente.UseVisualStyleBackColor = false;
-            this.BtnJogarNovamente.Click += new System.EventHandler(this.BtnJogarNovamente_Click);
+            this.BtnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.BtnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVoltar.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVoltar.ForeColor = System.Drawing.SystemColors.Control;
+            this.BtnVoltar.Location = new System.Drawing.Point(353, 174);
+            this.BtnVoltar.Name = "BtnVoltar";
+            this.BtnVoltar.Size = new System.Drawing.Size(249, 44);
+            this.BtnVoltar.TabIndex = 59;
+            this.BtnVoltar.Text = "Voltar";
+            this.BtnVoltar.UseVisualStyleBackColor = false;
+            this.BtnVoltar.Click += new System.EventHandler(this.BtnVoltar_Click);
             // 
             // PnlVitoria
             // 
             this.PnlVitoria.BackColor = System.Drawing.Color.Transparent;
             this.PnlVitoria.Controls.Add(this.LblVitoria);
-            this.PnlVitoria.Controls.Add(this.BtnJogarNovamente);
+            this.PnlVitoria.Controls.Add(this.BtnVoltar);
             this.PnlVitoria.Location = new System.Drawing.Point(90, 255);
             this.PnlVitoria.Name = "PnlVitoria";
             this.PnlVitoria.Size = new System.Drawing.Size(605, 218);
@@ -337,7 +337,18 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+      
+            // 
+            // Modo
+            // 
+            this.Modo.AutoSize = true;
+            this.Modo.Font = new System.Drawing.Font("Bahnschrift Condensed", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Modo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(158)))), ((int)(((byte)(135)))));
+            this.Modo.Location = new System.Drawing.Point(3, 324);
+            this.Modo.Name = "Modo";
+            this.Modo.Size = new System.Drawing.Size(82, 45);
+            this.Modo.TabIndex = 59;
+            this.Modo.Text = "temp";
             // 
             // Jogo
             // 
@@ -345,6 +356,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(779, 721);
+            this.Controls.Add(this.Modo);
             this.Controls.Add(this.PnlVitoria);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
@@ -383,7 +395,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox BtnClose;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -403,8 +414,10 @@
         private System.Windows.Forms.PictureBox P7;
         private System.Windows.Forms.Label LblVitoria;
         private System.Windows.Forms.Panel PGame;
-        private System.Windows.Forms.Button BtnJogarNovamente;
+        private System.Windows.Forms.Button BtnVoltar;
         private System.Windows.Forms.Panel PnlVitoria;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Label Modo;
+        public System.Windows.Forms.Label label5;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Velha
 {
@@ -14,14 +15,22 @@ namespace Velha
     {
         int player = 1;
         char[] arr = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-      
+        int ModoJogo;
+        Random rnd = new Random();
+        int jogadas=0;
 
 
-        PointF p1 = new PointF(10, 10); // ponto inicial linha
-        PointF p2 = new PointF(170, 30); // ponto final linha
 
-        float durationMS = 5000; // duração animação
-        float stepMS = 100; // quanto menor mais suave a animação
+
+
+        PointF p1; // ponto inicial linha
+        PointF p2; // ponto final linha
+
+        PointF p11; // ponto inicial linha
+        PointF p22; // ponto final linha
+
+        float durationMS = 1000; // duração animação
+        float stepMS = 20; // quanto menor mais suave a animação
 
         float stepWidthX;
         float k;
@@ -29,33 +38,34 @@ namespace Velha
         private int stepCounter = 0;
 
 
-
         public Jogo(int modo)
         { 
             InitializeComponent();
             PnlVitoria.Hide();
 
+            ModoJogo = modo;
+            switch (ModoJogo)
+            {
+                case 1:
+                    Modo.Text = "PvP";
+                    break;
+                case 3:
+                    Modo.Text = "PvE";
+                    break;
+            }
 
 
 
-            stepWidthX = (p2.X - p1.X) / (durationMS / stepMS);
 
-            k = (p2.Y - p1.Y) / (p2.X - p1.X);
-            d = (p2.X * p1.Y - p1.X * p2.Y) / (p2.X - p1.X);
 
-            timer1.Tick += timer1_Tick;
-            timer1.Interval = (int)stepMS;
-            timer1.Start();
+
+            
 
         }
 
 
         #region jogo
-        private void BtnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        
         #region Desenha O e X
         public void DrawCircle(PictureBox Pb)
         {
@@ -72,6 +82,7 @@ namespace Velha
             Pb.Image = bmp;
             
             player *= -1;
+            
         }
 
         public void DrawX(PictureBox Pb)
@@ -80,36 +91,140 @@ namespace Velha
             Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
             Bitmap bmp = new Bitmap(Pb.Width, Pb.Height);
             Graphics g = Graphics.FromImage(bmp);
-            
-            g.DrawLine(pen, borda, borda, Pb.Height-borda, Pb.Width-borda);
-            g.DrawLine(pen, borda, Pb.Height-borda, Pb.Width-borda, borda);
 
-            Pb.Image = bmp;
-           
+
+
+
+            p1 = new PointF(borda, borda);
+            p2 = new PointF(Pb.Height-borda, Pb.Width-borda);
+
+            p11 = new PointF(borda, Pb.Height - borda);
+            p22 = new PointF(Pb.Width - borda, borda);
+
+            stepWidthX = (p2.X - p1.X) / (durationMS / stepMS);
+
+            k = (p2.Y - p1.Y) / (p2.X - p1.X);
+            d = (p2.X * p1.Y - p1.X * p2.Y) / (p2.X - p1.X);
+
+
+            timer1.Tick += delegate
+            {
+                stepCounter++;
+
+                float x = p1.X + stepCounter * stepWidthX;
+                float y = k * x + d;
+
+                Pb.CreateGraphics().DrawLine(pen, p1, new PointF(x, y));
+                //Pb.CreateGraphics().DrawLine(pen, p11, new PointF(x, y));
+
+                if (stepCounter * stepMS > durationMS)
+                {
+                    stepCounter = 0;
+                    timer1.Stop();
+                    Pb.CreateGraphics().DrawLine(pen, p1, p2);
+                    Pb.CreateGraphics().DrawLine(pen, p11, p22);
+                }
+            };
+
+            timer1.Interval = (int)stepMS;
+            timer1.Start();
+
+
+
+            //for(int i = borda; i < Pb.Height - borda; i++)
+            //{
+            //    g.DrawLine(pen, borda, borda, i, i);
+            //    //g.DrawLine(pen, borda, i, i, borda);
+            //    Pb.Image = bmp;
+            //    Task.Delay(2).Wait();
+
+            //}
+
+
+            //g.DrawLine(pen, borda, borda, Pb.Height - borda, Pb.Width - borda);
+            //g.DrawLine(pen, borda, Pb.Height - borda, Pb.Width - borda, borda);
+
+
+
             player *= -1;
+            
         }
         #endregion
+
 
         #region Check Clicks
         private void P1_Click(object sender, EventArgs e)
         {
+            jogadas++;
             var pb = sender as PictureBox;
             int index = int.Parse(pb.Name.Substring(1)) - 1;
-            if (player>0)
+            bool jogou = false;
+            int jogada;
+            string posicao;
+
+            #region PvE
+            if (ModoJogo == 3)
             {
                 DrawX(pb);
                 arr[index] = 'X';
+                pb.Click -= P1_Click;
+                CheckWin();
+
+                Task.Delay(500).Wait();
+
+
+                if (jogadas != 9)
+                {
+                    while (!jogou)
+                    {
+                        jogada = rnd.Next(1, 10);
+                        posicao = 'P' + jogada.ToString();
+
+                        foreach (PictureBox Pb in PGame.Controls.OfType<PictureBox>())
+                        {
+                            if (Pb.Name == posicao)
+                            {
+                                if ((arr[jogada - 1] != 'X') && (arr[jogada - 1] != 'O'))
+                                {
+                                    player *= -1;
+                                    jogadas++;
+                                    DrawCircle(Pb);
+                                    arr[jogada - 1] = 'O';
+                                    Pb.Click -= P1_Click;
+                                    jogou = true;
+
+                                    CheckWin();
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            else
+            #endregion
+
+            #region PvP
+            else if (ModoJogo == 1)
             {
-                DrawCircle(pb);
-                arr[index] = 'O';
+                if(player == 1)
+                {
+                    DrawX(pb);
+                    arr[index] = 'X';
+                }
+                else
+                {
+                    DrawCircle(pb);
+                    arr[index] = 'O';
+                }
+                
+                pb.Click -= P1_Click;
+                CheckWin();
             }
+            #endregion
 
-            pb.Click -= P1_Click;
-
-            CheckWin();
         }
+
+
+           
         #endregion
 
         public void CheckWin()
@@ -204,43 +319,23 @@ namespace Velha
             #endregion
         }
 
-        private void BtnEntrar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LblVitoria_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnJogarNovamente_Click(object sender, EventArgs e)
-        {
-            Jogo jogo = new Jogo(1);
-            this.Hide();
-            jogo.Show();
-
-        }
-
         #endregion
 
 
 
-        private void timer1_Tick(object sender, EventArgs e)
+
+
+        
+        private void BtnClose_Click(object sender, EventArgs e)
         {
-            stepCounter++;
+            Application.Exit();
+        }
 
-            float x = p1.X + stepCounter * stepWidthX;
-            float y = k * x + d;
-            this.CreateGraphics().DrawLine(Pens.Black, p1, new PointF(x, y));
-
-
-            if (stepCounter * stepMS > durationMS)
-            {
-                stepCounter = 0;
-                timer1.Stop();
-                this.CreateGraphics().DrawLine(Pens.Red, p1, p2);
-            }
+        private void BtnVoltar_Click(object sender, EventArgs e)
+        {
+            Escolha escolha = new Escolha();
+            this.Hide();
+            escolha.Show();
         }
     }
 }
