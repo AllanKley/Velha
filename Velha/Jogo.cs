@@ -57,46 +57,42 @@ namespace Velha
         #region Desenha O e X
         public void DrawCircle(PictureBox Pb)
         {
-            int borda = 25;
-            float ang=0;
-            Pen pen = new Pen(Color.FromArgb(123, 158, 135), 30);
-            SolidBrush brush = new SolidBrush(SystemColors.Control);
-            SolidBrush brush2 = new SolidBrush(Color.Red);
+            float borda = 60,borda2 = 60;
 
-
-            Rectangle rec = new Rectangle(borda,borda,Pb.Width-borda*2,Pb.Height-borda*2);
-            Rectangle rec2 = new Rectangle(borda+10, borda+10, Pb.Width-(borda*2)-20, Pb.Height-(borda*2)-20);
-
-            
+            Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
+            Pen pen2 = new Pen(SystemColors.Control, 20);
             var g = Pb.CreateGraphics();
 
-            g.FillRectangle(brush2, rec);
-            g.DrawPie(pen, rec, 0, 200);
-
-            //step = 360 / (tempoAnim / tempoPassos);
-
-            //var tm = new System.Windows.Forms.Timer();
-
-            //tm.Tick += delegate
-            //{
-            //    g.Clear(SystemColors.Control);
-            //    ang += passos + step;
-            //    if (ang > 360)
-            //        ang = 360;
 
 
-            //    g.DrawPie(pen, rec, 0, ang);
-            //    g.FillEllipse(brush, rec2);
+            step = (60-25) / (tempoAnim / tempoPassos);
 
-            //    if (ang >= 360)
-            //    {
-            //        tm.Stop();
-            //    }
+            var tm = new System.Windows.Forms.Timer();
 
-            //};
+            tm.Tick += delegate
+            {
+                //g.Clear(SystemColors.Control);
 
-            //tm.Interval = (int)tempoPassos;
-            //tm.Start();
+                borda -= step;
+             
+                g.DrawEllipse(pen, borda, borda, (Pb.Width - borda * 2), (Pb.Height - borda * 2));
+
+                if (borda <= 40)
+                {
+                    borda2 -= step;
+                    g.DrawEllipse(pen2, borda2, borda2, (Pb.Width - borda2 * 2), (Pb.Height - borda2 * 2));
+                }
+
+                if (borda <= 25)
+                {
+                    tm.Stop();
+                 
+                }
+
+            };
+
+            tm.Interval = (int)tempoPassos;
+            tm.Start();
 
 
             player *= -1;
@@ -115,6 +111,7 @@ namespace Velha
             // c1 c2
             // c3 c4
 
+            
 
             step = (c4.X - c1.X) / (tempoAnim / tempoPassos);
 
@@ -160,13 +157,13 @@ namespace Velha
             #region PvE
             if (ModoJogo == 3)
             {
-                DrawCircle(pb);
+                DrawX(pb);
                 arr[index] = 'X';
                 pb.Click -= P1_Click;
                 CheckWin();
 
-                Task.Delay(500).Wait();
 
+                
 
                 if (jogadas != 9)
                 {
@@ -187,7 +184,7 @@ namespace Velha
                                     arr[jogada - 1] = 'O';
                                     Pb.Click -= P1_Click;
                                     jogou = true;
-
+                                    
                                     CheckWin();
                                 }
                             }
