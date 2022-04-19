@@ -23,19 +23,15 @@ namespace Velha
 
 
 
-        PointF p1; // ponto inicial linha
-        PointF p2; // ponto final linha
+        PointF c1, c2, c3, c4; // coordenadas cantos 
+        // c1 c2
+        // c3 c4
 
-        PointF p11; // ponto inicial linha
-        PointF p22; // ponto final linha
-
-        float durationMS = 1000; // duração animação
-        float stepMS = 20; // quanto menor mais suave a animação
-
-        float stepWidthX;
-        float k;
-        float d;
-        private int stepCounter = 0;
+        float tempoAnim = 200; // duração animação
+        float tempoPassos = 10; // quanto menor mais suave a animação
+        private int passos = 0; // contador passos
+        float step; // ?
+        
 
 
         public Jogo(int modo)
@@ -53,14 +49,6 @@ namespace Velha
                     Modo.Text = "PvE";
                     break;
             }
-
-
-
-
-
-
-            
-
         }
 
 
@@ -69,18 +57,48 @@ namespace Velha
         #region Desenha O e X
         public void DrawCircle(PictureBox Pb)
         {
-            int raio = 100;
+            int borda = 25;
+            float ang=0;
+            Pen pen = new Pen(Color.FromArgb(123, 158, 135), 30);
+            SolidBrush brush = new SolidBrush(SystemColors.Control);
+            SolidBrush brush2 = new SolidBrush(Color.Red);
 
-            Bitmap bmp = new Bitmap(Pb.Width, Pb.Height);
-            Graphics g = Graphics.FromImage(bmp);
-            Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
 
+            Rectangle rec = new Rectangle(borda,borda,Pb.Width-borda*2,Pb.Height-borda*2);
+            Rectangle rec2 = new Rectangle(borda+10, borda+10, Pb.Width-(borda*2)-20, Pb.Height-(borda*2)-20);
 
-            g.DrawEllipse(pen, (Pb.Height/2)-(raio/2), (Pb.Width/2)-(raio/2), raio, raio);
             
+            var g = Pb.CreateGraphics();
 
-            Pb.Image = bmp;
-            
+            g.FillRectangle(brush2, rec);
+            g.DrawPie(pen, rec, 0, 200);
+
+            //step = 360 / (tempoAnim / tempoPassos);
+
+            //var tm = new System.Windows.Forms.Timer();
+
+            //tm.Tick += delegate
+            //{
+            //    g.Clear(SystemColors.Control);
+            //    ang += passos + step;
+            //    if (ang > 360)
+            //        ang = 360;
+
+
+            //    g.DrawPie(pen, rec, 0, ang);
+            //    g.FillEllipse(brush, rec2);
+
+            //    if (ang >= 360)
+            //    {
+            //        tm.Stop();
+            //    }
+
+            //};
+
+            //tm.Interval = (int)tempoPassos;
+            //tm.Start();
+
+
             player *= -1;
             
         }
@@ -89,62 +107,39 @@ namespace Velha
         {
             int borda = 25;
             Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
-            Bitmap bmp = new Bitmap(Pb.Width, Pb.Height);
-            Graphics g = Graphics.FromImage(bmp);
+
+            c1 = new PointF(borda, borda);
+            c2 = new PointF(Pb.Width-borda, borda);
+            c3 = new PointF(borda, Pb.Height - borda);
+            c4 = new PointF(Pb.Width-borda, Pb.Height - borda);
+            // c1 c2
+            // c3 c4
 
 
+            step = (c4.X - c1.X) / (tempoAnim / tempoPassos);
 
+            var tm = new System.Windows.Forms.Timer();
 
-            p1 = new PointF(borda, borda);
-            p2 = new PointF(Pb.Height-borda, Pb.Width-borda);
-
-            p11 = new PointF(borda, Pb.Height - borda);
-            p22 = new PointF(Pb.Width - borda, borda);
-
-            stepWidthX = (p2.X - p1.X) / (durationMS / stepMS);
-
-            k = (p2.Y - p1.Y) / (p2.X - p1.X);
-            d = (p2.X * p1.Y - p1.X * p2.Y) / (p2.X - p1.X);
-
-
-            timer1.Tick += delegate
+            tm.Tick += delegate
             {
-                stepCounter++;
+                passos++;
 
-                float x = p1.X + stepCounter * stepWidthX;
-                float y = k * x + d;
+                float x = c1.X + (passos * step);
+                float y = x;
+                float z = c2.X - (passos * step);
+     
+                Pb.CreateGraphics().DrawLine(pen, c1, new PointF(x, y));
+                Pb.CreateGraphics().DrawLine(pen, c2, new PointF(z, y));
 
-                Pb.CreateGraphics().DrawLine(pen, p1, new PointF(x, y));
-                //Pb.CreateGraphics().DrawLine(pen, p11, new PointF(x, y));
-
-                if (stepCounter * stepMS > durationMS)
+                if (passos * tempoPassos > tempoAnim)
                 {
-                    stepCounter = 0;
-                    timer1.Stop();
-                    Pb.CreateGraphics().DrawLine(pen, p1, p2);
-                    Pb.CreateGraphics().DrawLine(pen, p11, p22);
+                    passos = 0;
+                    tm.Stop();
                 }
             };
 
-            timer1.Interval = (int)stepMS;
-            timer1.Start();
-
-
-
-            //for(int i = borda; i < Pb.Height - borda; i++)
-            //{
-            //    g.DrawLine(pen, borda, borda, i, i);
-            //    //g.DrawLine(pen, borda, i, i, borda);
-            //    Pb.Image = bmp;
-            //    Task.Delay(2).Wait();
-
-            //}
-
-
-            //g.DrawLine(pen, borda, borda, Pb.Height - borda, Pb.Width - borda);
-            //g.DrawLine(pen, borda, Pb.Height - borda, Pb.Width - borda, borda);
-
-
+            tm.Interval = (int)tempoPassos;
+            tm.Start();
 
             player *= -1;
             
@@ -165,7 +160,7 @@ namespace Velha
             #region PvE
             if (ModoJogo == 3)
             {
-                DrawX(pb);
+                DrawCircle(pb);
                 arr[index] = 'X';
                 pb.Click -= P1_Click;
                 CheckWin();
