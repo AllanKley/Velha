@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fadeb4c9f4334e06b6aa270e97253d64" Name="Diagram1">
+        <EntityTypeShape EntityType="VelhaModel.Fila" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VelhaModel.Jogada" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VelhaModel.Jogo" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VelhaModel.Player" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="VelhaModel.FK__Fila__idPlayer__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="VelhaModel.FK__Jogada__idJogo__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="VelhaModel.FK__Jogo__idUser1__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="VelhaModel.FK__Jogo__idUser2__164452B1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
