@@ -16,7 +16,7 @@ namespace Velha
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Escolha());
+            Application.Run(new Login());
         }
     }
 }

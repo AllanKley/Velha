@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
+
 
 namespace Velha
 {
@@ -21,8 +21,6 @@ namespace Velha
 
 
 
-
-
         PointF c1, c2, c3, c4; // coordenadas cantos 
         // c1 c2
         // c3 c4
@@ -30,7 +28,6 @@ namespace Velha
         float tempoAnim = 200; // duração animação
         float tempoPassos = 10; // quanto menor mais suave a animação
         private int passos = 0; // contador passos
-        float step; // ?
         
 
 
@@ -62,10 +59,10 @@ namespace Velha
             Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
             Pen pen2 = new Pen(SystemColors.Control, 20);
             var g = Pb.CreateGraphics();
+            
 
 
-
-            step = (60-25) / (tempoAnim / tempoPassos);
+            float step = (60-25) / (tempoAnim / tempoPassos);
 
             var tm = new System.Windows.Forms.Timer();
 
@@ -74,7 +71,7 @@ namespace Velha
                 //g.Clear(SystemColors.Control);
 
                 borda -= step;
-             
+                
                 g.DrawEllipse(pen, borda, borda, (Pb.Width - borda * 2), (Pb.Height - borda * 2));
 
                 if (borda <= 40)
@@ -86,7 +83,6 @@ namespace Velha
                 if (borda <= 25)
                 {
                     tm.Stop();
-                 
                 }
 
             };
@@ -103,6 +99,7 @@ namespace Velha
         {
             int borda = 25;
             Pen pen = new Pen(Color.FromArgb(123, 158, 135), 20);
+            var g = Pb.CreateGraphics();
 
             c1 = new PointF(borda, borda);
             c2 = new PointF(Pb.Width-borda, borda);
@@ -111,9 +108,7 @@ namespace Velha
             // c1 c2
             // c3 c4
 
-            
-
-            step = (c4.X - c1.X) / (tempoAnim / tempoPassos);
+            float step = (c4.X - c1.X) / (tempoAnim / tempoPassos);
 
             var tm = new System.Windows.Forms.Timer();
 
@@ -125,10 +120,10 @@ namespace Velha
                 float y = x;
                 float z = c2.X - (passos * step);
      
-                Pb.CreateGraphics().DrawLine(pen, c1, new PointF(x, y));
-                Pb.CreateGraphics().DrawLine(pen, c2, new PointF(z, y));
+                g.DrawLine(pen, c1, new PointF(x, y));
+                g.DrawLine(pen, c2, new PointF(z, y));
 
-                if (passos * tempoPassos > tempoAnim)
+                if (passos * tempoPassos >= tempoAnim)
                 {
                     passos = 0;
                     tm.Stop();
@@ -145,7 +140,7 @@ namespace Velha
 
 
         #region Check Clicks
-        private void P1_Click(object sender, EventArgs e)
+        private async void P1_Click(object sender, EventArgs e)
         {
             jogadas++;
             var pb = sender as PictureBox;
@@ -163,7 +158,7 @@ namespace Velha
                 CheckWin();
 
 
-                
+                await Task.Delay(1000);
 
                 if (jogadas != 9)
                 {
